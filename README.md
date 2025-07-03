@@ -12,23 +12,23 @@ This tag supports multiple request types:
 
 1. Add the **Postscript Tag** to your server container in GTM.
 2. Select the **Type** of request you want to send:
-   - `Track Event`
-   - `Create Subscriber`
-   - `Update Subscriber`
+   - **Track Event**
+   - **Create Subscriber**
+   - **Update Subscriber**
 3. Fill in required and optional parameters based on the selected type.
 4. Provide your **Private API Key** (found in your Postscript [API Settings](https://app.postscript.io/account/api)).
 
 ### Track Event
 
-Send custom events with metadata tied to a subscriber using identifiers like `subscriber_id`, `phone`, or `email`.
-> Use fallback option to read Subscriber ID from `ps-id` URLquery parameter, `ps_id` cookie, or from Stape Data Tag Event Data.
+Send custom events with metadata tied to a subscriber using identifiers like `Subscriber ID`, `Phone`, or `Email`.
+> Use fallback option to read Subscriber ID from `ps-id` URL query parameter, `ps_id` cookie, or from Stape Data Tag Event Data.
 
 - Required:
-  - **Event Name**
-  - **At least one subscriber identifier**
+  - `Event Name`
+  - **At least one subscriber identifier**: `Subscriber ID`, `Phone`, or `Email`
 
 - Optional:
-  - **Event Properties**: Predefined fields like `occurred_at` and `external_id`
+  - **Event Properties**: Predefined fields like `Occured At` and `Event ID`
   - **Custom Properties**: Additional event metadata
 
 > If no Subscriber is found from identifiers, the event will still be recorded and used later if a match is made.
@@ -38,24 +38,27 @@ Send custom events with metadata tied to a subscriber using identifiers like `su
 Adds a new subscriber to Postscript.
 
 - Required:
-  - **Phone Number**
+  - `Phone Number`
   - One of: `Keyword` or `Keyword ID`
 
 - Optional:
   - `Email`, `Origin`, `Shopify Customer ID`
-  - Tags
-  - Custom Properties
+  - `Tags` (can be used in segmentation or filtering)
+  - **Custom Properties**: Additional metadata about the user that can be used in segmentation or filtering
 
 ### Update Subscriber
 
 Updates an existing subscriber.
 
 - Required:
-  - **Subscriber ID**
-  > Use fallback option to read Subscriber ID from `ps-id` URLquery parameter, `ps_id` cookie, or from Stape Data Tag Event Data.
+  - `Subscriber ID`
+  > Use fallback option to read Subscriber ID from `ps-id` URL query parameter, `ps_id` cookie, or from Stape Data Tag Event Data (`common_cookie.ps_id`)
 
 - Optional:
-  - `Email`, Tags (additive), Custom Properties
+  -  `Email`
+  -  `Tags` (additive - can be used in segmentation or filtering)
+  - **Custom Properties**: Additional metadata about the user that can be used in segmentation or filtering
+
 
 ### Additional Options
 
