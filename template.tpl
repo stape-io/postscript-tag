@@ -1,4 +1,4 @@
-___TERMS_OF_SERVICE___
+﻿___TERMS_OF_SERVICE___
 
 By creating or modifying this file you agree to Google Tag Manager's Community
 Template Gallery Developer Terms of Service available at
@@ -35,87 +35,95 @@ ___TEMPLATE_PARAMETERS___
 
 [
   {
-    "type": "SELECT",
-    "name": "type",
-    "displayName": "Type",
-    "macrosInSelect": false,
-    "selectItems": [
-      {
-        "value": "trackEvent",
-        "displayValue": "Track Event"
-      },
-      {
-        "value": "createSubscriber",
-        "displayValue": "Create Subscriber"
-      },
-      {
-        "value": "updateSubscriber",
-        "displayValue": "Update Subscriber"
-      }
-    ],
-    "simpleValueType": true,
-    "defaultValue": "trackEvent",
-    "alwaysInSummary": true,
+    "type": "GROUP",
+    "name": "configGroup",
+    "displayName": "",
+    "groupStyle": "NO_ZIPPY",
     "subParams": [
       {
-        "type": "TEXT",
-        "name": "eventName",
-        "displayName": "Event Name",
-        "simpleValueType": true,
-        "enablingConditions": [
+        "type": "SELECT",
+        "name": "type",
+        "displayName": "Type",
+        "macrosInSelect": false,
+        "selectItems": [
           {
-            "paramName": "type",
-            "paramValue": "trackEvent",
-            "type": "EQUALS"
+            "value": "trackEvent",
+            "displayValue": "Track Event"
+          },
+          {
+            "value": "createSubscriber",
+            "displayValue": "Create Subscriber"
+          },
+          {
+            "value": "updateSubscriber",
+            "displayValue": "Update Subscriber"
           }
         ],
-        "help": "The name of the event that will show in the Postscript application.\n\u003cbr/\u003e\u003cbr/\u003e\nNote: Postscript will automatically prefix your partner/shop name in front of the event. For example, if sending an event called \u003ci\u003e\"OrderPlaced\"\u003c/i\u003e, it show in the UI as \u003ci\u003e\"[Your Partner/Shop Name] - OrderPlaced\"\u003c/i\u003e to distinguish it from others of a similar name.\n\u003cbr/\u003e\u003cbr/\u003e\nThe following characters are accepted: lowercase letters (a-z), uppercase letters (A-Z), digits (0-9), and underscores (_).",
+        "simpleValueType": true,
+        "defaultValue": "trackEvent",
+        "alwaysInSummary": true,
+        "subParams": [
+          {
+            "type": "TEXT",
+            "name": "eventName",
+            "displayName": "Event Name",
+            "simpleValueType": true,
+            "enablingConditions": [
+              {
+                "paramName": "type",
+                "paramValue": "trackEvent",
+                "type": "EQUALS"
+              }
+            ],
+            "help": "The name of the event that will show in the Postscript application.\n\u003cbr/\u003e\u003cbr/\u003e\nNote: Postscript will automatically prefix your partner/shop name in front of the event. For example, if sending an event called \u003ci\u003e\"OrderPlaced\"\u003c/i\u003e, it show in the UI as \u003ci\u003e\"[Your Partner/Shop Name] - OrderPlaced\"\u003c/i\u003e to distinguish it from others of a similar name.\n\u003cbr/\u003e\u003cbr/\u003e\nThe following characters are accepted: lowercase letters (a-z), uppercase letters (A-Z), digits (0-9), and underscores (_).",
+            "valueValidators": [
+              {
+                "type": "NON_EMPTY"
+              },
+              {
+                "type": "REGEX",
+                "args": [
+                  "[a-zA-Z0-9_]+"
+                ],
+                "errorMessage": "The following characters are accepted: lowercase letters (a-z), uppercase letters (A-Z), digits (0-9), and underscores (_)."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TEXT",
+        "name": "apiKey",
+        "displayName": "Private API Key",
+        "simpleValueType": true,
+        "help": "To find or create your Private API Key go to:\u003cbr\u003e \u003ca href\u003d\"https://app.postscript.io/account/api\"\u003eAccount Settings \u003e API\u003c/a\u003e on Postscript.",
         "valueValidators": [
           {
             "type": "NON_EMPTY"
-          },
-          {
-            "type": "REGEX",
-            "args": [
-              "[a-zA-Z0-9_]+"
-            ],
-            "errorMessage": "The following characters are accepted: lowercase letters (a-z), uppercase letters (A-Z), digits (0-9), and underscores (_)."
           }
-        ]
-      }
-    ]
-  },
-  {
-    "type": "TEXT",
-    "name": "apiKey",
-    "displayName": "Private API Key",
-    "simpleValueType": true,
-    "help": "To find or create your Private API Key go to:\u003cbr\u003e \u003ca href\u003d\"https://app.postscript.io/account/api\"\u003eAccount Settings \u003e API\u003c/a\u003e on Postscript.",
-    "valueValidators": [
-      {
-        "type": "NON_EMPTY"
-      }
-    ],
-    "valueHint": "sk_ba0fcdf846264c28943444304351a61a"
-  },
-  {
-    "type": "SELECT",
-    "name": "useOptimisticScenario",
-    "displayName": "Use Optimistic Scenario",
-    "macrosInSelect": true,
-    "selectItems": [
-      {
-        "value": false,
-        "displayValue": "false"
+        ],
+        "valueHint": "sk_ba0fcdf846264c28943444304351a61a"
       },
       {
-        "value": true,
-        "displayValue": "true"
+        "type": "SELECT",
+        "name": "useOptimisticScenario",
+        "displayName": "Use Optimistic Scenario",
+        "macrosInSelect": true,
+        "selectItems": [
+          {
+            "value": false,
+            "displayValue": "false"
+          },
+          {
+            "value": true,
+            "displayValue": "true"
+          }
+        ],
+        "simpleValueType": true,
+        "help": "The tag will call gtmOnSuccess() without waiting for a response from the API. This will speed up sGTM response time however your tag will always return the status fired successfully even in case it is not.",
+        "defaultValue": false
       }
-    ],
-    "simpleValueType": true,
-    "help": "The tag will call gtmOnSuccess() without waiting for a response from the API. This will speed up sGTM response time however your tag will always return the status fired successfully even in case it is not.",
-    "defaultValue": false
+    ]
   },
   {
     "type": "GROUP",
@@ -534,8 +542,8 @@ ___TEMPLATE_PARAMETERS___
   },
   {
     "type": "GROUP",
-    "name": "consentSettingsGroup",
-    "displayName": "Consent Settings",
+    "name": "tagExecutionConsentSettingsGroup",
+    "displayName": "Tag Execution Consent Settings",
     "groupStyle": "ZIPPY_CLOSED",
     "subParams": [
       {
@@ -549,7 +557,8 @@ ___TEMPLATE_PARAMETERS___
           },
           {
             "value": "required",
-            "displayValue": "Send data in case marketing consent given"
+            "displayValue": "Send data in case marketing consent given",
+            "help": "Aborts the tag execution if marketing consent (\u003ci\u003ead_storage\u003c/i\u003e Google Consent Mode or Stape\u0027s Data Tag parameter) is not given."
           }
         ],
         "simpleValueType": true,
@@ -676,9 +685,7 @@ const sendHttpRequest = require('sendHttpRequest');
 ==============================================================================*/
 
 const traceId = getRequestHeader('trace-id');
-
 const eventData = getAllEventData();
-
 const useOptimisticScenario = isUIFieldTrue(data.useOptimisticScenario);
 
 if (!isConsentGivenOrNotRequired()) {
@@ -1700,4 +1707,5 @@ setup: "const Promise = require('Promise');\nconst JSON = require('JSON');\ncons
 ___NOTES___
 
 Created on 7/3/2025, 3:40:54 PM
+
 

@@ -17,9 +17,7 @@ const sendHttpRequest = require('sendHttpRequest');
 ==============================================================================*/
 
 const traceId = getRequestHeader('trace-id');
-
 const eventData = getAllEventData();
-
 const useOptimisticScenario = isUIFieldTrue(data.useOptimisticScenario);
 
 if (!isConsentGivenOrNotRequired()) {
