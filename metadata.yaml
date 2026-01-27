@@ -1,5 +1,7 @@
 homepage: 'https://stape.io/'
 documentation: 'https://github.com/stape-io/postscript-tag'
 versions:
+  - sha: 179e058f6722af02a64f66549da859652159b28d
+    changeNotes: Updated consent section.
   - sha: 504d3c08cd1eb358b68c1b82420dffa52a45ceea
     changeNotes: Initial release.
