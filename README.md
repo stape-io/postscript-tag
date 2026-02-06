@@ -21,6 +21,7 @@ This tag supports multiple request types:
 ### Track Event
 
 Send custom events with metadata tied to a subscriber using identifiers like `Subscriber ID`, `Phone`, or `Email`.
+
 > Use fallback option to read Subscriber ID from `ps-id` URL query parameter, `ps_id` cookie, or from Stape Data Tag Event Data.
 
 - Required:
@@ -52,19 +53,22 @@ Updates an existing subscriber.
 
 - Required:
   - `Subscriber ID`
-  > Use fallback option to read Subscriber ID from `ps-id` URL query parameter, `ps_id` cookie, or from Stape Data Tag Event Data (`common_cookie.ps_id`)
+    > Use fallback option to read Subscriber ID from `ps-id` URL query parameter, `ps_id` cookie, or from Stape Data Tag Event Data (`common_cookie.ps_id`)
 
 - Optional:
-  -  `Email`
-  -  `Tags` (additive - can be used in segmentation or filtering)
+  - `Email`
+  - `Tags` (additive - can be used in segmentation or filtering)
   - **Custom Properties**: Additional metadata about the user that can be used in segmentation or filtering
-
 
 ### Additional Options
 
 - **Optimistic Scenario**: Improves performance by firing `gtmOnSuccess()` immediately without waiting for API response.
 - **Consent Settings**: Prevent sending data unless ad storage consent is given.
 - **Logging Options**: Log to console (during debug or always) or to BigQuery for analytics and debugging.
+
+## Useful links:
+
+- [Step-by-step guide on how to configure Postscript Tag](https://stape.io/helpdesk/documentation/postscript-tag)
 
 ## Open Source
 
